@@ -14,5 +14,4 @@ public class SampleHotel {
 
 	private final Chef chef;
 
-
 }
