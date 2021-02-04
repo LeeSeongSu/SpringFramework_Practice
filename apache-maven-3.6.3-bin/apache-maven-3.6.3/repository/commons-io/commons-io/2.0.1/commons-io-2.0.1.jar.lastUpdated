@@ -1,7 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Wed Jan 20 14:29:41 KST 2021
-https\://repo.maven.apache.org/maven2/.lastUpdated=1611120581891
-http\://www.egovframe.go.kr/maven/.error=
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact commons-io\:commons-io\:jar\:2.0.1 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/commons-io/commons-io/2.0.1/commons-io-2.0.1.jar. Error code 501, HTTPS Required
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120556768
-http\://www.egovframe.go.kr/maven/.lastUpdated=1611120557525

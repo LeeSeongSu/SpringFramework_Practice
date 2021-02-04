@@ -1,7 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Wed Jan 20 14:28:25 KST 2021
-https\://repo.maven.apache.org/maven2/.lastUpdated=1611120505224
-http\://www.egovframe.go.kr/maven/.error=
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact commons-dbcp\:commons-dbcp\:pom\:1.4 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.pom. Error code 501, HTTPS Required
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120504883
-http\://www.egovframe.go.kr/maven/.lastUpdated=1611120504883

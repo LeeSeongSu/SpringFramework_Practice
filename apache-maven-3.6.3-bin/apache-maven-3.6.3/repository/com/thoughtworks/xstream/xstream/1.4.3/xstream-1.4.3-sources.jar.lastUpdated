@@ -1,7 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Wed Jan 20 14:31:24 KST 2021
-https\://repo.maven.apache.org/maven2/.lastUpdated=1611120684389
-http\://www.egovframe.go.kr/maven/.error=
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact com.thoughtworks.xstream\:xstream\:jar\:sources\:1.4.3 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/com/thoughtworks/xstream/xstream/1.4.3/xstream-1.4.3-sources.jar. Error code 501, HTTPS Required
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120683047
-http\://www.egovframe.go.kr/maven/.lastUpdated=1611120683139
