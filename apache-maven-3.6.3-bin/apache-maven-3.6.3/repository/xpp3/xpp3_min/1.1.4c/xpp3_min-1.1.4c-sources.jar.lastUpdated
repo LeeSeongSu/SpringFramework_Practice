@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 20 14:31:26 KST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1611120686994
+http\://www.egovframe.go.kr/maven/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact xpp3\:xpp3_min\:jar\:sources\:1.1.4c from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c-sources.jar. Error code 501, HTTPS Required
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120685962
+http\://www.egovframe.go.kr/maven/.lastUpdated=1611120686067

@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 20 14:29:13 KST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1611120553974
+http\://www.egovframe.go.kr/maven/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact com.thoughtworks.xstream\:xstream-parent\:pom\:1.4.3 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.3/xstream-parent-1.4.3.pom. Error code 501, HTTPS Required
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120552785
+http\://www.egovframe.go.kr/maven/.lastUpdated=1611120552820

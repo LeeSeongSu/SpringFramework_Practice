@@ -182,3 +182,15 @@
    - HttpHeaders : 응답에 내용 없이 Http 헤더 메시지만 전달하는 용도로 사용
 
 ------
+
+- #### 2021-02-02
+
+  1.  프로젝트의 생성 및 준비
+     - Spring Legacy Project의 생성
+     - pom.xml에서 스프링 버전 변경
+     - spring-test, spring-jdbc, spring-tx 추가
+     - junit버전 변경
+     - servlet버전 변경
+     - HikariCP, MyBatis, mybats-spring, Log4jdcb 추가
+     - JDBC드라이버 프로젝트 내 추가
+     - 기타 Lombok의 설정 등

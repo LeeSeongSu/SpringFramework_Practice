@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 20 14:30:39 KST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1611120639758
+http\://www.egovframe.go.kr/maven/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven-plugin-registry\:jar\:sources\:2.0.6 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6-sources.jar. Error code 501, HTTPS Required
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120638612
+http\://www.egovframe.go.kr/maven/.lastUpdated=1611120638704

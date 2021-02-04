@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jan 20 14:28:39 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact egovframework.rte\:egovframework.rte.fdl.property\:pom\:2.7.0 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/egovframework/rte/egovframework.rte.fdl.property/2.7.0/egovframework.rte.fdl.property-2.7.0.pom. Error code 501, HTTPS Required
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1611120519717
+http\://www.egovframe.go.kr/maven/.lastUpdated=1611120519798
