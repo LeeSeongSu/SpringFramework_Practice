@@ -1,0 +1,26 @@
+package org.zerock.controller;
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
+@Log4j
+public class BoardControllerTests {
+
+	@Setter(onMethod_ = {@Autowired})
+	private WebApplicationContext ctx;
+	private MockMvc mockMvc;
+
+	@org.junit.Before
+	public void setup() {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+	}
+
+	@Test
+	public void testList() throws Exception {
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")).andReturn().getModelAndView().getModelMap());
+
+	}
+}

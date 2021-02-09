@@ -32,6 +32,47 @@ public class BoardMapperTests {
 		vo.setWriter("tester");
 
 		boardMapper.insert(vo);
-		log.info("............."+vo);
+		log.info("----------------------------------");
+		log.info("after insert " + vo.getBno());
+	}
+
+	@Test
+	public void testInsertSelectKey() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("AAATest 테스트");
+		vo.setContent("AAAcontent 테스트");
+		vo.setWriter("AAAtester");
+
+		boardMapper.insertSelectKey(vo);
+		log.info("----------------------------------");
+		log.info("after insertSelectKet " + vo.getBno());
+
+	}
+
+	@Test
+	public void testRead() {
+		BoardVO vo = boardMapper.read(9L);
+		log.info(vo);
+
+	}
+
+	@Test
+	public void testDelete() {
+		BoardVO vo = boardMapper.read(9L);
+		int count = boardMapper.delete(1L);
+		log.info("count:" + count);
+
+	}
+
+	@Test
+	public void testUpdate() {
+		BoardVO vo = new BoardVO();
+		vo.setBno(2L);
+		vo.setTitle("Updated Title");
+		vo.setContent("Updated content");
+		vo.setWriter("user00");
+
+		log.info("count: " + boardMapper.update(vo));
+
 	}
 }

@@ -194,3 +194,17 @@
      - HikariCP, MyBatis, mybats-spring, Log4jdcb 추가
      - JDBC드라이버 프로젝트 내 추가
      - 기타 Lombok의 설정 등
+
+------
+
+- ### **2021-02-09**
+
+  1. 비즈니스 계층(서비스 계층)
+     - 고객의 요구사항을 반영하는 계층
+     - 업무의 단위로 설계
+       - 트랜잭션의 단위
+     - 여러 개의 Mapper나 DAO를 사용하는 경우가 존재함
+     - xxxService의 형태로 작성
+  2. 서비스 패키지 설정
+     - 인터페이스와 클래스를 설정하고, root-context.xml에 등록
+       - <context:component-scan base-pakage="xxxxxxxx.service">
