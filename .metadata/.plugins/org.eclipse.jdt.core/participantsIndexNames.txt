@@ -7,5 +7,7 @@ C:\dev1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1206470954.index
 \ex02\src\main\java
 C:\dev1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3012140731.index
 \ex01\src\main\java
+C:\dev1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\755943323.index
+\ex02\src\main\java
 C:\dev1\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2415907875.index
 \ex01\src\main\java

@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BoardControllerTests {
 
-	@Setter(onMethod_ = {@Autowired})
+	@Setter(onMethod_ = { @Autowired })
 	private WebApplicationContext ctx;
 	private MockMvc mockMvc;
 
@@ -36,6 +36,13 @@ public class BoardControllerTests {
 	public void testList() throws Exception {
 		log.info(
 				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")).andReturn().getModelAndView().getModelMap());
+
+	}
+
+	@Test
+	public void testRegister() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/register").param("title", "Test 테스트")
+				.param("content", "Content 테스트").param("writer", "Writer 테스트")).andReturn());
 
 	}
 }

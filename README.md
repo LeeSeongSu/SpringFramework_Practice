@@ -208,3 +208,45 @@
   2. 서비스 패키지 설정
      - 인터페이스와 클래스를 설정하고, root-context.xml에 등록
        - <context:component-scan base-pakage="xxxxxxxx.service">
+
+------
+
+- ### 2021-02-15
+
+1. BoardController의 등록 처리
+   - POST방식으로 처리되는 데이터를 BoardVO 타입의 인스턴스로 바인딩해서 메서드에서 활용
+   - BoardService를 이용해서 등록 처리
+   - 'redirect:' 를 이용해서 다시 목록으로 이동
+
+```java
+@PostMapping("/register")
+	public String register(BoardVO board, RedirectAttributes rttr) {
+		log.info("board: " + board);
+
+		Long bno = service.register(board);
+		log.info("BNO: " + bno);
+		rttr.addFlashAttribute("result", bno);
+
+		return "redirect:/board/list";
+	}
+```
+
+2. POST방식 후 처리
+   - 등록/수정/삭제의 최종 처리는 POST방식을 이용
+   - 브라우저에는 어떤 결과를 보여줄 것인가?
+     1. 별도의 결과 페이지를 만들어서 보여주는 방식
+        - 회원 가입 완료 페이지 등
+     2. 목록 페이지로 이동하는 방식
+        - 목록 페이지에서 알림 메시짖를 보여주는 방식
+   - POST방식 후에는 'redirect:/..' 를 고려하자
+3. RedirectAttributes는 언제 사용하는가?
+   - 시나리오
+     - GET방식으로 입력페이지 /board/register
+     - POST방식으로 입력 처리 /board/register
+     - 처리가 끝난 후 화면 이동을 해도 브라우저의 URL은 POST방식 처리 URL 그대로
+     - 만일 브라우저를 새로고침하면?
+   - 'redirect:/..' 를 이용해서 브라우저와 연결을 한번 종료
+   - 브라우저는 새롭게 특정 URL을 요구
+4. JSTL를 통해 결과값을 표현
+   - (JSTL 공부링크)[https://velog.io/@ye050425/JSP-JSTL-%EC%A0%95%EB%A6%AC](https://velog.io/@ye050425/JSP-JSTL-%EC%A0%95%EB%A6%AC)
+
