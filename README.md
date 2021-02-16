@@ -250,3 +250,44 @@
 4. JSTL를 통해 결과값을 표현
    - (JSTL 공부링크)[https://velog.io/@ye050425/JSP-JSTL-%EC%A0%95%EB%A6%AC](https://velog.io/@ye050425/JSP-JSTL-%EC%A0%95%EB%A6%AC)
 
+------
+
+- ### 2021-02-15
+
+  - rttr.addAttribute
+    - 전달한 값은 url뒤에 붙으며,  refresh해도 데이터가 유지된다.
+
+  -  rttr.addFlashAttribute
+
+    - 전달한 값은 url뒤에 붙지 않는다. 
+
+      일회성이라 리프레시할 경우 데이터가 소멸한다.
+
+      또한 2개이상 쓸 경우, 데이터는 소멸한다. 
+
+      따라서 맵을 이용하여 한번에 값전달해야한다. 
+
+      ##### ->즉 그냥 새로고침을하면 아무정보도 안뜨지만 
+
+      ##### 글 등록/수정/삭제 후에 목록화면으로 이동하는 경우 "몇번째 게시글이 등록되었습니다"와 같은 모달정보 출력 시 매우 유용
+
+  - 글 등록시 한글 깨짐 시
+
+    ```xml
+    <filter>
+    		<filter-name>encoding</filter-name>
+    		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+    		</filter-class>
+    		<init-param>
+    			<param-name>encoding</param-name>
+    			<param-value>UTF-8</param-value>
+    		</init-param>
+    	</filter>
+    	<filter-mapping>
+    		<filter-name>encoding</filter-name>
+    		<servlet-name>appServlet</servlet-name>
+    	</filter-mapping>
+    ```
+
+    - web.xml을 이용한 필터 설정을 한다.
+

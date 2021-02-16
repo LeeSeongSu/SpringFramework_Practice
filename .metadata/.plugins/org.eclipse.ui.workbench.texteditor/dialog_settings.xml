@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="count"/>
+		<item key="selection" value="Flash"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="flash"/>
+			<item value="modal"/>
+			<item value="Gecko"/>
+			<item value="Show"/>
+			<item value="show"/>
+			<item value="DataTables Usage Information"/>
+			<item value="ialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at https://datatables.net/."/>
+			<item value="viewdata&apos;"/>
+			<item value="viewdata"/>
+			<item value="Kit"/>
+			<item value="page-wrapper"/>
+			<item value="../"/>
+			<item value="board:"/>
 			<item value="count"/>
 			<item value="after"/>
-			<item value="log4"/>
-			<item value="lombok"/>
-			<item value="hika"/>
-			<item value="hi"/>
-			<item value="servlet"/>
-			<item value="servlet-"/>
-			<item value="junit"/>
-			<item value="ojdbc"/>
-			<item value="webmvc"/>
-			<item value="5.2"/>
-			<item value="5.2."/>
-			<item value="5.2.1"/>
-			<item value="1.8"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/resources/"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1192"/>
-		<item key="DIALOG_Y_ORIGIN" value="450"/>
+		<item key="DIALOG_X_ORIGIN" value="9"/>
+		<item key="DIALOG_Y_ORIGIN" value="9"/>
 		<item key="DIALOG_WIDTH" value="340"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
