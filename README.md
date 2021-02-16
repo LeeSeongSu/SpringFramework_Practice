@@ -256,7 +256,7 @@
 
   - rttr.addAttribute
     
-  - 전달한 값은 url뒤에 붙으며,  refresh해도 데이터가 유지된다.
+    - 전달한 값은 url뒤에 붙으며,  refresh해도 데이터가 유지된다.
     
   - rttr.addFlashAttribute
 
