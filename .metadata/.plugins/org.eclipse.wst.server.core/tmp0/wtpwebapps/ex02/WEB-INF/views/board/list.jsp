@@ -13,9 +13,11 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">DataTables Advanced Tables
-			<button id='regBtn' type="button" class="btn btn-xs pull-right">Register
-				New Board</button></div>
+			<div class="panel-heading">
+				DataTables Advanced Tables
+				<button id='regBtn' type="button" class="btn btn-xs pull-right">Register
+					New Board</button>
+			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<table width="100%"
@@ -33,7 +35,8 @@
 						<c:forEach items="${list}" var="board">
 							<tr class="odd gradeX">
 								<td>${board.bno}</td>
-								<td>${board.title}</td>
+								<td><a href="/board/get?bno=<c:out value='${board.bno}'/>"><c:out
+											value='${board.title}' /></a></td>
 								<td>${board.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${board.regdate}" /></td>
@@ -43,7 +46,22 @@
 						</c:forEach>
 					</tbody>
 				</table>
-
+				<h3>${pageMaker}</h3>
+				<div class="pull-right">
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+						</c:if>
+						<c:forEach begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}" var="num">
+							<li class="page-item ${pageMaker.cri.pageNum == num ? "active":"" }"><a
+								class="page-link" href="#">${num}</a></li>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
 			</div>
 			<!-- /.panel-body -->
 		</div>
@@ -65,7 +83,7 @@
 				<p>Modal body text goes here.</p>
 			</div>
 			<div class="modal-footer">
-			
+
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -77,16 +95,22 @@
 
 		checkModal(result);
 
-		function checkModal(result) {
-			if (result == '')
-				return;
+		history.replaceState({}, null, null); //브라우저에 보관하고 있는 데이터를 전부 지운다..
 
-			if (parseInt(result) > 0) {
+		function checkModal(result) {
+
+			if (result === '' || history.state) {//브라우저 상에서 데이터가 존재한다면 (다른페이지에서 왔다는 의미)
+				return;
+			}
+			if (result === 'success') {
+				$(".modal-body").html("정상적으로 처리되었습니다");
+			} else if (parseInt(result) > 0) {
 				$(".modal-body").html("게시글" + result + "번이 등록되었습니다.");
 			}
+
 			$("#myModal").modal("show");
 		}
-		$("#regBtn").click(function(){
+		$("#regBtn").click(function() {
 			self.location = "/board/register"
 		})
 	});

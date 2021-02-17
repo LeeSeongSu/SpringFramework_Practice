@@ -1,0 +1,16 @@
+package org.zerock.domain;
+
+public class PageDTO {
+	private int startPage, endPage;
+	private boolean prev, next;
+
+	private int total;
+	private Criteria cri;
+
+	public PageDTO(Criteria cri, int total) {
+		this.cri = cri;
+		this.total = total;
+
+		this.endPage = (int) Math.ceil(cri.getPageNum() / 10.0 * 10);
+	}
+}
