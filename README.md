@@ -292,3 +292,169 @@
 
     - web.xml을 이용한 필터 설정을 한다.
 
+------
+
+- ### 2020-03-05
+
+  #### 전자정부프레임워크 With PostgreSQL
+
+  - #### pom.xml
+
+    - 프로젝트 내 빌드 옵션을 설정하는 부분
+
+    - PostgreSQL 연동을 위한 dependency 추가
+
+      - PostgreSQL 사용 이유 :  무료로 사용, 다양한 join 방법을 제공, 복잡한 쿼리를 실행해야하는 시스템에서 효율적, 동시성을 효율적으로 처리하여 매우 높은 수준의 동시성을 달성
+
+        ※ 간단한 동작을 구현하는 서비스는 MySQL, Oracle
+        복잡한 쿼리를 요구하고, insert 위주의 대규모 서비스인 경우에는 PostgreSQL
+
+        
+
+      - DBCP -> Database Connection Pool의 약자. 요청이 올때마다 Connection 객체를 얻는 것이 아닌, 미리 일정 갯수 찍어내서 Connection Pool 로 관리하는 것.
+
+        1. WAS가 실행되면서 미리 일정량의 DB Connection 객체를 생성하고 Pool 이라는 공간에 저장해 둔다.
+
+        2. HTTP 요청에 따라 필요할 때 Pool에서 Connection 객체를 가져다 쓰고 반환한다
+
+      - log4jdbc
+
+        - 로그 확인용
+
+    ```xml
+    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+    		<dependency>
+    			<groupId>org.postgresql</groupId>
+    			<artifactId>postgresql</artifactId>
+    			<version>42.2.18</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>com.googlecode.log4jdbc</groupId>
+    			<artifactId>log4jdbc</artifactId>
+    			<version>1.2</version>
+    			<exclusions>
+    				<exclusion>
+    					<artifactId>slf4j-api</artifactId>
+    					<groupId>org.slf4j</groupId>
+    				</exclusion>
+    			</exclusions>
+    		</dependency>
+    		<dependency>
+    			<groupId>commons-dbcp</groupId>
+    			<artifactId>commons-dbcp</artifactId>
+    			<version>1.4</version>
+    		</dependency>
+    ```
+
+    
+
+  - #### context-datasource.xml
+
+    - 커넥션 풀을 관리하는 DataSource
+
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+      <beans xmlns="http://www.springframework.org/schema/beans"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+      	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+              http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+      
+      	<bean class="org.apache.commons.dbcp.BasicDataSource"
+      		id="dataSource">
+      		<property name="driverClassName"
+      			value="org.postgresql.Driver">
+              </property>
+      		<property name="url"
+      			value="jdbc:postgresql://localhost:5432/dvdrental">					</property>
+      		<property name="username" value="postgres"></property>
+      		<property name="password" value="user123"></property>
+      	</bean>
+      
+      </beans>
+      ```
+
+      
+
+  - #### context-mapper.xml
+
+    - DB 쿼리 이후 VO객체에 대한 맵핑을 MyBatis를 사용해서 할 수 있도록 설정하는 것
+
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+      <beans xmlns="http://www.springframework.org/schema/beans"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+      	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+      		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+      
+      	
+      	<bean
+      		class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+      		<property name="basePackage" value="egovframework" />
+      	</bean>
+      	
+      	<!-- mybatis SqlSessionFactoryBean -->
+      	<bean id="sqlSessionFactory"
+      		class="org.mybatis.spring.SqlSessionFactoryBean">
+      		<!-- DB에 접속 하기 위해서 설정 -->
+      		<property name="dataSource" ref="dataSource"/>
+      		<!-- myBatis 기본 설정 -->
+      		<property name="configLocation" value = "classpath:/mybatis-config.xml"/>
+      		<!-- query 적힌 xml 위치 -->
+      		<property name="mapperLocations" value = "classpath*:/egovframework/sqlmap/mappers/**/*Mapper.xml" />
+      	</bean>
+      
+      	<bean id="sqlSession"
+      		class="org.mybatis.spring.SqlSessionTemplate">
+      		<constructor-arg name="sqlSessionFactory"
+      			ref="sqlSessionFactory"></constructor-arg>
+      	</bean>
+      
+      </beans>
+      ```
+
+      
+
+  - #### mybatis-config.xml
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    <configuration>
+    	
+    	<settings>
+    		<!-- 자동으로 카멜케이스 규칙으로 변환 -->
+    		<setting name="mapUnderscoreToCamelCase" value="true"/>
+    	</settings>
+    	
+    	<typeAliases>
+    		<package name="egovframework.practice.test.domain"/>
+    	</typeAliases>
+    	
+    </configuration>
+    ```
+
+    
+
+  - #### testMapper.xml
+
+    -  Mapper namespace와 ID를 연결할 TestMapperInterface를 두어서 interface를 호출하는 방법을 사용
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="egovframework.practice.test.service.TestMapper">
+    
+    	<select id="selectTest" resultType="TestVO">
+    		SELECT
+    		*
+    		FROM test
+    	</select>
+    
+    
+    </mapper> 
+    ```
+
+    
